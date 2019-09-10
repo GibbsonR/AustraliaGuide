@@ -1,0 +1,106 @@
+<div class="example-form">
+        <mat-card>
+            <mat-card-header fxLayoutAlign="center">                
+                <mat-card-subtitle><h2>Welcome to {{ title }} module {{this.searchstring}}</h2></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="example-full-width" *ngIf="CurrentMenuString === 'FIRST MENU'">
+
+                    <mat-card>
+                        <mat-card-header>                
+                            <mat-card-subtitle><h2>Restaurant Locality Options</h2></mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                                        
+        
+
+                            <mat-form-field class="example-full-width">
+                                <mat-select [(ngModel)]="selectedRange" placeholder="Select the distance from locality selected">
+                                    <mat-option value="1">Within 5Km of current location</mat-option>
+                                    <mat-option value="2">Within 20Km of cuurrent location</mat-option>
+                                    <mat-option value="3">Outside 20km range</mat-option>
+                                    <mat-option value="4">Allow me to key-in Min-Max Distance</mat-option>
+                                </mat-select>
+                           </mat-form-field>
+                           <mat-button-toggle class="example-full-width">
+                                <button mat-raised-button (click)="FirstMenu_Goto_Second_Or_ThirdMenu()" >Next</button>
+                            </mat-button-toggle>
+                    </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="example-full-width" *ngIf="CurrentMenuString === 'SECOND MENU'">
+
+                    <mat-card>
+                        <mat-card-header>                
+                            <mat-card-subtitle><h2>Please key-in Min and Max distance</h2></mat-card-subtitle>    
+                        </mat-card-header>
+                            <mat-card-content>
+                                <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Minimum distance from current location (Km)" [(ngModel)]="minDistance" maxlength="5" value="[minDistance]">
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Maximum distance from current location (Km)" [(ngModel)]="maxDistance" maxlength="5" value="[maxDistance]">
+                                </mat-form-field>
+                                <mat-button-toggle class="example-full-width">
+                                        <button mat-raised-button (click)="SecondMenu_BackTo_FirstMenu()" >Back</button>
+                                        <button mat-raised-button (click)="SecondMenu_Goto_ForthMenu()" >Next</button>
+                                </mat-button-toggle>
+                                    
+                            </mat-card-content>
+                    </mat-card>>
+                </div>
+                <div *ngIf="CurrentMenuString === 'THIRD MENU'">
+                <mat-card>
+    
+                    <mat-card-header>                
+                            <mat-card-subtitle *ngIf="selectedRange === '1'"><h2>Locations within 5Km from currrent location</h2></mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="selectedRange === '2'"><h2>Location within 20Km from current location </h2></mat-card-subtitle>    
+                            <mat-card-subtitle *ngIf="selectedRange === '3'"><h2>Locations over 20Km from current location</h2></mat-card-subtitle>    
+                            <mat-card-subtitle *ngIf="selectedRange === '4'"><h2>Locations between {{ this.minDistance }}Km and {{this.maxDistance}}Km from current location</h2></mat-card-subtitle>    
+                    </mat-card-header>
+
+
+
+                    <mat-card-content>
+                        <mat-form-field class="example-full-width">
+                        <mat-select [(ngModel)]="selectedLocalities" multiple placeholder="Select one or more neighborhoods/towns/Cities">
+                                <mat-option *ngFor="let locality of localityList" 
+                                            [value]="locality.CityId">
+                                            {{locality.CityName}}
+                                </mat-option> 
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-button-toggle class="example-full-width">
+                                <button mat-raised-button (click)="ThirdMenu_Back_To_FirstMenu()" >Back</button>
+                                <button mat-raised-button (click)="ThirdMenu_Goto_ForthMenu()" >Next</button>
+                        </mat-button-toggle>
+                        
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="CurrentMenuString === 'FOURTH MENU'">
+                    
+                <mat-card>
+                    <mat-card-header>                
+                            <mat-card-subtitle><h2>Filtor by Restaurant name, description, address, cusine, feature</h2></mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Restaurant name, description, address, cusine, feature" [(ngModel)]="searchstring"
+                             maxlength="50" value="[searchstring]" (input)="onSearchChange($event.target.value)" >
+                    </mat-form-field>
+                    <mat-button-toggle class="example-full-width">
+                        <button mat-raised-button (click)="ForthMenu_BackTo_Third_Or_Second()" >Back</button>
+                        <button mat-raised-button (click)="Search()" >Search</button>
+                    </mat-button-toggle>
+                    
+            
+        
+                </mat-card>
+            </div> 
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+
