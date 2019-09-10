@@ -1,0 +1,25 @@
+<div class="p-2">
+    <app-restaurant-header>
+
+    </app-restaurant-header>
+    <div *ngIf="restaurantSearchModel?.selectedLocalities?.length>0">
+        <app-selector>
+        
+        </app-selector>
+    </div>
+    <div *ngIf="!bIsItemView">
+        <app-search-list>
+        
+        </app-search-list>
+        <app-pagination>
+            
+        </app-pagination>
+    </div>
+    <div *ngIf="bIsItemView">
+        <app-search-item>
+
+        </app-search-item>
+    </div>
+ 
+</div>
+
