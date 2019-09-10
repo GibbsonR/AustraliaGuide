@@ -1,0 +1,47 @@
+
+<div class="example-form">
+  <mat-card class="main" *ngFor="let item of this.restaurantlist" >
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" class="example-form">
+          <div  class="form-Size"> 
+              <mat-card class="Content">
+                  <mat-card-header class="Header">
+                      <mat-card-title>{{item.RowNum}}. {{item.RestaurantName }}</mat-card-title>
+                      <mat-card-subtitle>{{item.RestaurantName + " Address : " + item.FullAddress }}</mat-card-subtitle>
+                  </mat-card-header> 
+                  <mat-card class="ImageCard">
+                    {{ item.Cuisine.substring(0,40) }}...
+                    <mat-card-actions class="example-full-width">
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename1" alt="Photo 1">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename2" alt="Photo 2">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename3" alt="Photo 3">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename4" alt="Photo 4">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename5" alt="Photo 5">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename6" alt="Photo 6">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename7" alt="Photo 7">        
+                        <img class="RImage" mat-card-image [src]="item.ImageList.imagename8" alt="Photo 8">        
+                     </mat-card-actions>
+                        
+                  </mat-card>
+  
+
+                  <mat-card class="Actions">
+                    <mat-card-actions class="Actions">
+                        <button class="MyButton" (click)="cmd1( item.RestaurantId )">LIKE</button>
+                        <button class="MyButton" (click)="cmd2( item.RestaurantId )">SHARE</button>
+                        <button class="MyButton" (click)="cmd3( item.RestaurantId )">VIEW</button>
+                    </mat-card-actions>
+                  </mat-card>
+                    <!--mat-card class="Actions">
+                    </mat-card-->
+                  </mat-card>
+    </div>            
+              
+                      
+      
+      </div>
+      
+  </mat-card>
+
+</div>
+
+ 
