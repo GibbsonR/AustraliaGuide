@@ -1,0 +1,27 @@
+<div class="example-form">
+  <mat-card >
+      <mat-card-header fxLayoutAlign="center">                
+          <mat-card-subtitle><h2>Select Page</h2></mat-card-subtitle>
+      </mat-card-header>
+    <mat-card-content >
+        <div class="example-full-width" >
+
+            <mat-card>
+                <mat-card-header>                
+                    <mat-card-subtitle *ngIf="this.numberOfPage > 0 "><h2>Result Pages for search</h2></mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="this.numberOfPage == 0"><h2>Sorry No results found</h2></mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="paging" *ngFor="let item of createRange( this.numberOfPage ); let currentIndex = index">
+                  <mat-button-toggle class="mat-paging" (click)="cmdPageSelected( currentIndex + 1 )"> 
+                      {{currentIndex + 1}} 
+                  </mat-button-toggle>
+              
+              </mat-card-content>
+          </mat-card>
+      </div>
+  </mat-card-content>
+</mat-card>
+</div>
+
+
+
